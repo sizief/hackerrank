@@ -1,0 +1,43 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use List::Util qw/sum max/;
+
+
+
+# Complete the hourglassSum function below.
+sub hourglassSum {
+  my ($arr) = @_;
+  my @res;
+  my $row=0;
+  my $column=0; 
+  while (scalar(@res)<17){
+      if ($column == 4){
+          $row++;
+          $column = 0;
+      }
+
+      push @res, sum(@{$arr->[$row]}[$column..$column+2]) + $arr->[$row+1]->[$column+1] + sum(@{$arr->[$row+2]}[$column..$column+2]);
+      $column++;
+  }
+return max(@res)
+}
+
+
+my @arr = ();
+
+for (1..6) {
+    my $arr_item = <>;
+    $arr_item =~ s/\s+$//;
+    my @arr_item = split /\s+/, $arr_item;
+
+    push @arr, \@arr_item;
+}
+
+my $result = hourglassSum \@arr;
+
+print  "$result\n";
+
+
+

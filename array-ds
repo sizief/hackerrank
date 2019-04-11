@@ -1,0 +1,20 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+sub reverseArray {
+  my ($arr) = @_;
+  my @reverse;
+  for(my $i=scalar(@$arr);$i--;$i != 0){
+     push @reverse, $i;#$arr->[$i];
+  }
+  return @reverse
+}
+
+
+#my $arr_count = <STDIN>;
+my $arr = <STDIN>;
+my @arr = split(" ", $arr);
+
+print reverseArray(\@arr);
